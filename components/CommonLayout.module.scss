@@ -1,0 +1,9 @@
+.mainSection {
+  display: flex;
+  height: calc(100vh - 100px);
+
+  .pageContainer {
+    width: 100%;
+    border: 2px solid red;
+  }
+}

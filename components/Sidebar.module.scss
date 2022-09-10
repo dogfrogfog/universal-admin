@@ -1,0 +1,8 @@
+.sidebarContainer {
+  width: 30%;
+  border: 2px solid red;
+
+  &.hidden {
+    width: 10%;
+  }
+}
