@@ -1,8 +1,35 @@
 .sidebarContainer {
   width: 30%;
-  border: 2px solid red;
+  background-color: #d8f3dc;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
 
   &.hidden {
-    width: 10%;
+    width: 70px;
+    transition: transform 0.3s ease-in-out;
+
+    .collapseButton svg {
+      transform: rotate(-90deg);
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+
+  .collapseButton {
+    width: 50px;
+    height: 50px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(90deg);
+      transition: transform 0.3s ease-in-out;
+    }
   }
 }

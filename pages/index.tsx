@@ -8,7 +8,7 @@ import Sidebar from '../components/Sidebar';
 const Home: NextPage = () => {
   return (
     <div>
-      WEOFINWEIOFNWEIONFIOWENFIOWENFIOWNEF
+      home 
     </div>
   )
 }
