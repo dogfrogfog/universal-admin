@@ -1,25 +1,17 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from "@fortawesome/free-solid-svg-icons"
-import { faMinus } from "@fortawesome/free-solid-svg-icons"
-import { faBan } from "@fortawesome/free-solid-svg-icons"
-
-import Button from '../../ui-kit/Button'
+import Button from '@mui/material/Button'
 
 import styles from './Table.module.scss'
 
 function TableActions() {
   return (
     <div className={styles.tableActions}>
-      <Button>
-        <FontAwesomeIcon icon={faPlus} />
+      <Button variant="contained">
         add
       </Button>
-      <Button>
-        <FontAwesomeIcon icon={faMinus} />
+      <Button variant="contained">
         delete
       </Button>
-      <Button>
-        <FontAwesomeIcon icon={faBan} />
+      <Button variant="contained">
         cancel
       </Button>
     </div>

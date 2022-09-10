@@ -1,130 +1,66 @@
-import styles from './Table.module.scss'
+import TableUI from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import Paper from '@mui/material/Paper'
 
 import TableActions from './TableActions'
+import styles from './Table.module.scss'
 
-import {
-  createColumnHelper,
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from '@tanstack/react-table'
-
-interface User {
-  name: string
-  email: string
-  role: string
-  description?: string
-  regDate: string
-  lastLogin: string
+const createData = (
+  name: string,
+  calories: number,
+  fat: number,
+  carbs: number,
+  protein: number,
+) => {
+  return { name, calories, fat, carbs, protein }
 }
 
-const defaultData: User[] = [
-  {
-    name: 'tanner',
-    email: 'email@tanner.com',
-    role: 'admin',
-    description: 'This user is commonly used for administration purposes',
-    regDate: '11/11/2010',
-    lastLogin: '12/11/2010',
-  },
-  {
-    name: 'tandy',
-    email: 'email@tandy.com',
-    role: 'moder',
-    description: 'Content moderation',
-    regDate: '11/11/2020',
-    lastLogin: '12/11/2020',
-  },
-  {
-    name: 'joe',
-    email: 'email@joe.com',
-    role: 'sudo admin',
-    regDate: '01/01/1',
-    lastLogin: '12/11/2020',
-  },
-]
-
-const columnHelper = createColumnHelper<User>()
-
-const columns = [
-  columnHelper.accessor('name', {
-    cell: info => info.getValue(),
-    footer: info => info.column.id,
-  }),
-  columnHelper.accessor(row => row.email, {
-    id: 'email',
-    cell: info => info.getValue(),
-    header: () => <span>Last Name</span>,
-    footer: info => info.column.id,
-  }),
-  columnHelper.accessor('email', {
-    header: () => 'Email',
-    cell: info => info.renderValue(),
-    footer: info => info.column.id,
-  }),
-  columnHelper.accessor('role', {
-    header: 'Role',
-    footer: info => info.column.id,
-  }),
-  columnHelper.accessor('description', {
-    header: 'Description',
-    footer: info => info.column.id,
-  }),
-  columnHelper.accessor('regDate', {
-    header: 'Reg date',
-    footer: info => info.column.id,
-  }),
-  columnHelper.accessor('lastLogin', {
-    header: 'Last login',
-    footer: info => info.column.id,
-  }),
-]
+const rows = [
+  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  createData('Eclair', 262, 16.0, 24, 6.0),
+  createData('Cupcake', 305, 3.7, 67, 4.3),
+  createData('Gingerbread', 356, 16.0, 49, 3.9),
+];
 
 function Table() {
-  const table = useReactTable({
-    data: defaultData,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-  })
 
   return (
     <div className={styles.tableContiner}>
       <TableActions />
-      <table className={styles.table}>
-        <thead>
-          {table.getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id}>
-              <th className={styles.checkAll}>
-                <input type="checkbox" />
-              </th>
-              {headerGroup.headers.map(header => (
-                <th key={header.id}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
-                </th>
-              ))}
-            </tr>
+      <TableContainer component={Paper}>
+        <TableUI sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Dessert (100g serving)</TableCell>
+              <TableCell align="right">Calories</TableCell>
+              <TableCell align="right">Fat&nbsp;(g)</TableCell>
+              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
+              <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow
+                key={row.name}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {row.name}
+                </TableCell>
+                <TableCell align="right">{row.calories}</TableCell>
+                <TableCell align="right">{row.fat}</TableCell>
+                <TableCell align="right">{row.carbs}</TableCell>
+                <TableCell align="right">{row.protein}</TableCell>
+              </TableRow>
           ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map(row => (
-            <tr key={row.id}>
-              <td className={styles.check}>
-                <input type="checkbox" />
-              </td>
-              {row.getVisibleCells().map(cell => (
-                <td key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+          </TableBody>
+        </TableUI>
+      </TableContainer>
     </div>
   )
 }

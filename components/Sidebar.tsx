@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import cl from 'classnames'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleUp } from "@fortawesome/free-solid-svg-icons"
+import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 
 import styles from './Sidebar.module.scss'
 
@@ -14,7 +13,7 @@ function Sidebar() {
     <div className={cl(styles.sidebarContainer, !isOpen ? styles.hidden : '')}>
       menu 2
       <button className={styles.collapseButton} onClick={toggleSidebar}>
-        <FontAwesomeIcon icon={faAngleUp} />
+        <ExpandLessIcon />
       </button>
     </div>
   )

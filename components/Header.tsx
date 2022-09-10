@@ -1,7 +1,6 @@
 import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCog } from "@fortawesome/free-solid-svg-icons"
-import { faUsers } from "@fortawesome/free-solid-svg-icons"
+import SettingsIcon from '@mui/icons-material/Settings'
+import GroupIcon from '@mui/icons-material/Group';
 
 import styles from './Header.module.scss'
 
@@ -20,11 +19,11 @@ function Header({ }) {
       <div className={styles.user}>
         <ul>
           <li>
-            <FontAwesomeIcon icon={faCog} />
+            <SettingsIcon />
           </li>
           <li>
             <Link href="/users">
-              <FontAwesomeIcon icon={faUsers} />
+              <GroupIcon />
             </Link>
           </li>
         </ul>
