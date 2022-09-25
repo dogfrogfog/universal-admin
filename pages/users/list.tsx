@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react'
+import { useState, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import { Table, Button, Tag, TableProps } from 'antd'
@@ -36,7 +36,15 @@ const columns = [
   },
 ];
 
-const data = [];
+interface DataType {
+  key: React.Key;
+  name: ReactNode;
+  level: string;
+  currentRank: number;
+  status: ReactNode;
+}
+
+const data: DataType[] = [];
 
 for (let i = 0; i < 146; i++) {
   data.push({
@@ -69,7 +77,7 @@ const UsersList: NextPage = () => {
 
   const rowSelection: TableProps<{}>['rowSelection'] = {
     selectedRowKeys,
-    onChange: (newSelectedRowKeys) => {
+    onChange: (newSelectedRowKeys: any) => {
       console.log('selectedRowKeys changed: ', selectedRowKeys)
       setSelectedRowKeys(newSelectedRowKeys)
     },

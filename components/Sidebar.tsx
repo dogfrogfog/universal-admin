@@ -1,16 +1,16 @@
 import { ReactNode } from 'react'
 import Link from 'next/link'
+import { Menu, MenuProps } from 'antd'
 import { ImFilesEmpty } from 'react-icons/im'
-import { FiUsers } from 'react-icons/fi'
 import { AiOutlineTrophy, AiOutlineHome } from 'react-icons/ai'
 import { BiNews, BiStats } from 'react-icons/bi'
 import { GiTabletopPlayers } from 'react-icons/gi'
 
 import styles from './Sidebar.module.scss'
 
-import { Menu, MenuProps } from 'antd'
+type MenuItem = Required<MenuProps>['items'][number];
 
-function getItem(label: string, key: string, icon?: ReactNode, children?: ReactNode[])  {
+function getItem(label: ReactNode, key: string, icon?: ReactNode, children?: MenuItem[]): MenuItem  {
   return {
     key,
     icon,
