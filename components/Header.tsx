@@ -1,34 +1,38 @@
 import Link from 'next/link'
-import SettingsIcon from '@mui/icons-material/Settings'
-import GroupIcon from '@mui/icons-material/Group';
+import { FiSettings, FiUsers } from 'react-icons/fi'
 
 import styles from './Header.module.scss'
 
-function Header({ }) {
+function Header() {
   return (
     <header className={styles.headerContainer}>
       <div className={styles.logo}>
         <Link href="/">LOGO</Link>
       </div>
       <div className={styles.menu}>
-        <ul>
+        {/* <ul>
           <li>menu item 1</li>
           <li>menu item 2</li>
-        </ul>
+        </ul> */}
       </div>
       <div className={styles.user}>
         <ul>
           <li>
-            <SettingsIcon />
+            <Link href="/settings">
+              <FiSettings />
+            </Link>
           </li>
           <li>
             <Link href="/users">
-              <GroupIcon />
+              <FiUsers />
             </Link>
           </li>
         </ul>
-        <div className={styles.image}>
-          {/* image */}
+        <div>
+          <Link href="/profile">
+            <div className={styles.image}>
+            </div>
+          </Link>
         </div>
       </div>
     </header>
