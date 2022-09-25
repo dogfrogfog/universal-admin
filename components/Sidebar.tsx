@@ -29,6 +29,7 @@ const items: MenuProps['items'] = [
   getItem('Турниры', 'tournaments', <AiOutlineTrophy />, [
     getItem(<Link href="/tournaments/list">Список турниров</Link>, 'tournaments/list'),
     getItem(<Link href="/tournaments/create">Создать</Link>, 'tournaments/create'),
+    getItem(<Link href="/tournaments/formats">Форматы турниров</Link>, 'tournaments/formats'),
   ]),
   getItem('Контент', 'content', <BiNews />, [
     getItem(<Link href="/content/news">Новости</Link>, 'content/news'),
